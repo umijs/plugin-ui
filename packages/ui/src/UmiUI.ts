@@ -1032,7 +1032,7 @@ export default class UmiUI {
           const [command] = process.argv.slice(2);
           const url = `http://localhost:${port}/`;
           console.log(
-            command === 'dev' ? `🌈 Umi UI mini Ready on port 3000.` : `⛽️ Ready on ${url}.`,
+            command === 'dev' ? `🌈 Umi UI mini Ready on port ${port}.` : `⛽️ Ready on ${url}.`,
           );
           if (browser) {
             openBrowser(url);
