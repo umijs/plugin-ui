@@ -1,41 +1,41 @@
 # Umi UI
 
-**[Umi](https://github.com/umijs/umi) 研发工作台**，集成一系列可视化辅助编程（VAP）插件，帮助开发者更快更好地开发 Umi 项目。
+**[Umi](https://github.com/umijs/umi) R&D Workbench**, integrates a series of Visual Aided Programming (VAP) plug-ins to help developers develop Umi projects faster and better.
 
 ![https://user-images.githubusercontent.com/13595509/73431180-c77ab400-437a-11ea-9baa-ebd00109b1d0.png](https://user-images.githubusercontent.com/13595509/73431180-c77ab400-437a-11ea-9baa-ebd00109b1d0.png)
 
-**用于 umi@3 项目**
+**For umi@3 project**
 
-## 🎬 快速开始
+## 🎬 Quick start
 
-第一步，先在项目中安装 `@umijs/preset-ui`
+The first step is to install `@umijs/preset-ui` in the project first
 
 ```sh
 $ yarn add @umijs/preset-ui -D
 ```
 
-开始使用：
+start using:
 
 ```bash
 # in umi project root path
 - $ umi dev
 ```
 
-## ✨ 主要功能
+## ✨ Main functions
 
-### 任务
+### Task
 
-命令可视化展示
+Command visual display
 
 ![https://camo.githubusercontent.com/9352fc593eb35e8cde6162b8a333d32d2a3c3197/68747470733a2f2f63646e2e6e6c61726b2e636f6d2f79757175652f302f323031392f6769662f38363032352f313537303638373036313932302d36663239623636342d346335382d343335312d383933622d6234333035333334316366352e676966](https://camo.githubusercontent.com/9352fc593eb35e8cde6162b8a333d32d2a3c3197/68747470733a2f2f63646e2e6e6c61726b2e636f6d2f79757175652f302f323031392f6769662f38363032352f313537303638373036313932302d36663239623636342d346335382d343335312d383933622d6234333035333334316366352e676966)
 
-### 资产
+### Assets
 
-页面中插入区块
+Insert block in page
 
 ![https://camo.githubusercontent.com/b8218fb0de21a567f474c0bb4e4a9d8dd96257ca/68747470733a2f2f63646e2e6e6c61726b2e636f6d2f79757175652f302f323031392f6769662f38363032352f313537343134353634323731322d34656638663065302d623833352d343633382d616336382d3732336163303736393533352e676966](https://camo.githubusercontent.com/b8218fb0de21a567f474c0bb4e4a9d8dd96257ca/68747470733a2f2f63646e2e6e6c61726b2e636f6d2f79757175652f302f323031392f6769662f38363032352f313537343134353634323731322d34656638663065302d623833352d343633382d616336382d3732336163303736393533352e676966)
 
-指定页面中可插入区块位置
+Specify the position where the block can be inserted in the page
 
 ```tsx
 import React from 'react';
@@ -62,7 +62,7 @@ export default () => (
 
 ![https://user-images.githubusercontent.com/13595509/73427305-731f0680-4371-11ea-83de-1f19a99c32cd.png](https://user-images.githubusercontent.com/13595509/73427305-731f0680-4371-11ea-83de-1f19a99c32cd.png)
 
-### 从页面打开资产
+### Open assets from the page
 
 ![gif](https://user-images.githubusercontent.com/13595509/76141271-8ffbd780-609d-11ea-8a28-e9ac6c77552d.gif)
 
@@ -70,9 +70,9 @@ export default () => (
 window.postMessage(
   JSON.stringify({
     action: 'umi.ui.block.addTemplate',
-    // 只需要 4 个参数
-    payload:  {
-      name: '分析页',
+    // Only 4 parameters are required
+    payload: {
+      name:'Analysis page',
       key: "DashboardAnalysis",
       url: "https://github.com/ant-design/pro-blocks/tree/master/DashboardAnalysis",
       path: "DashboardAnalysis",
@@ -82,11 +82,11 @@ window.postMessage(
 )
 ```
 
-### 小气泡信息提示
+### Small bubble message prompt
 
 ![aaa](https://user-images.githubusercontent.com/13595509/86702323-6cde3600-c045-11ea-8293-0e62956b0410.gif)
 
-如果 UI 插件希望调用小气泡，可通过以下 API：
+If the UI plug-in wants to call the small bubble, it can use the following API:
 
 ```js
 // 小气泡开启 loading
@@ -97,12 +97,12 @@ window.parent.postMessage(
   '*',
 );
 
-// 修改小气泡显示的文字
+// Modify the text displayed in the small bubble
 window.parent.postMessage(
   JSON.stringify({
-    action: 'umi.ui.changeEdit',
+    action:'umi.ui.changeEdit',
     payload: {
-      'zh-CN': 'OneAPI 更新了',
+      'zh-CN':'OneAPI updated',
       'en-US': 'OneAPI Updated',
     },
   }),
@@ -110,131 +110,132 @@ window.parent.postMessage(
 );
 ```
 
-[更多功能](https://github.com/sorrycc/blog/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+Umi+UI+in%3Atitle+)
+[More features](https://github.com/sorrycc/blog/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+Umi+UI+in%3Atitle+)
 
 ## 📖 API
 
-API 由 [Umi 插件基础 API](https://umijs.org/plugin/umi-ui.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8E%A5%E5%8F%A3) + [客户端 API](https://umijs.org/plugin/umi-ui.html#客户端接口) 组成。
+API is composed of [Umi Plugin Basic API](https://umijs.org/plugin/umi-ui.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8E%A5%E5%8F%A3) + [Client API](https://umijs.org/plugin/umi-ui.html#ClientInterface).
 
-## 😊 如何贡献？
+## 😊 How to contribute?
 
-`master` 用于 `umi@3`。
+`master` is used for ʻumi@3`.
 
-### 目录结构
+### Directory Structure
 
 ```bash
 .
 ├── README.md
 ├── examples
-│   └── app # dev 开发时测试的项目
+│ └── app # dev The project tested during development
 ├── lerna.json
 ├── package.json
 ├── packages
-│   ├── preset-ui # ui 插件集，包含后面的插件
-│   │   ├── package.json
-│   │   └── src
-│   │       ├── bubble # mini 版小气泡
-│   │       ├── index.ts # 集成 blocks、tasks、./plugins/*
-│   │       └── plugins
-│   │           ├── configuration # 配置 UI 插件
-│   │           ├── dashboard # Dashboard 面板插件
-│   │           └── routes # TODO: 路由
-│   │  
-│   ├── block-sdk # 区块 SDK，用于 plugin-blocks 和 plugin-ui-blocks
-│   │   ├── package.json
-│   │   ├── .fatherrc.ts # father-build 构建 cjs
-│   │   └── src # sdk 主体
-│   │
-│   ├── plugin-ui-blocks # 资产 UI 插件
-│   │   ├── dist # ui 目录构建的 index.umd.js
-│   │   ├── package.json
-│   │   ├── .fatherrc.ts # father-build 构建 umd 与 cjs
-│   │   ├── src # 服务端逻辑
-│   │   └── ui # 客户端 UI 部分
-│   ├── plugin-ui-tasks
-│   │   ├── package.json
-│   │   ├── src
-│   │   └── ui
-│   ├── theme # Umi UI 主题包，后续更换成 antd@4 暗色主题包
-│   │   ├── dark.less
-│   │   ├── light.less
-│   │   └── package.json
-│   ├── types # Umi UI 类型，集成在 @umijs/types 中，建议社区插件从 @umijs/types 导入
-│   └── ui # Umi UI server
-│       ├── client # Umi UI 主体
-│       │   └── src
-│       │       └── PluginAPI.ts # 提供插件客户端 API
-│       ├── package.json
-│       └── src # Umi UI Server
+│ ├── preset-ui # ui plugin set, including the following plugins
+│ │ ├── package.json
+│ │ └── src
+│ │ ├── bubble # mini version of small bubbles
+│ │ ├── index.ts # integrated blocks, tasks, ./plugins/*
+│ │ └── plugins
+│ │ ├── configuration # Configuration UI plugin
+│ │ ├── dashboard # Dashboard panel plugin
+│ │ └── routes # TODO: Route
+│ │
+│ ├── block-sdk # Block SDK, used for plugin-blocks and plugin-ui-blocks
+│ │ ├── package.json
+│ │ ├── .fatherrc.ts # father-build build cjs
+│ │ └── src # sdk main body
+│ │
+│ ├── plugin-ui-blocks # Asset UI plugin
+│ │ ├── dist # index.umd.js built by the ui directory
+│ │ ├── package.json
+│ │ ├── .fatherrc.ts # father-build builds umd and cjs
+│ │ ├── src # server logic
+│ │ └── ui # Client UI part
+│ ├── plugin-ui-tasks
+│ │ ├── package.json
+│ │ ├── src
+│ │ └── ui
+│ ├── theme # Umi UI theme package, later replaced with antd@4 dark theme package
+│ │ ├── dark.less
+│ │ ├── light.less
+│ │ └── package.json
+│ ├── types # Umi UI type, integrated in @umijs/types, it is recommended to import community plugins from @umijs/types
+│ └── ui # Umi UI server
+│ ├── client # Umi UI main body
+│ │ └── src
+│ │ └── PluginAPI.ts # Provide plug-in client API
+│ ├── package.json
+│ └── src # Umi UI Server
 ├── scripts
-│   ├── dev.ts
-│   ├── publish.js
-│   ├── syncTNPM.js # 同步 tnpm
-│   ├── ui.js # ui 构建脚本，使用 umi 构建 Umi UI 主框架
-│   └── uiPlugins.js
-└── test # TODO: 更多场景测试用例
-     └── ui.e2e.ts  # e2e 测试用例
+│ ├── dev.ts
+│ ├── publish.js
+│ ├── syncTNPM.js # Sync tnpm
+│ ├── ui.js # ui build script, use umi to build the main Umi UI framework
+│ └── uiPlugins.js
+└── test # TODO: More scenarios test cases
+  └── ui.e2e.ts # e2e test case
 ```
 
-### 准备工作
+### Ready to work
 
-clone 下仓库后，先执行相应包的安装、link 工作。
+After clone the warehouse, perform the installation and link work of the corresponding package.
 
 ```bash
 $ yarn
 ```
 
-### 开发调试
+### Development and debugging
 
-执行构建，并且带上 `-w` 用于实时修改编译：
+Execute the build, and bring `-w` for real-time modification and compilation:
 
 ```bash
-# 单独一个终端
+# Single terminal
 $ yarn build -w
 ```
 
-执行 UI 构建，也带上 `-w` ：
+Perform UI construction, and also bring `-w`:
 
 ```bash
-# 另启一个终端
+# Start another terminal
 $ yarn ui:build -w
 ```
 
-进入 `cd example/app` 测试项目：
+Enter the `cd example/app` test project:
 
 ```bash
-# 第三个终端
-# 仓库调试带上了 BABEL_CACHE=none DEBUG=umiui*
+# Third terminal
+# Warehouse debugging brought BABEL_CACHE=none DEBUG=umiui*
+
 $ yarn start
 🚀 Starting Umi UI using umi@3.0.1...
 🌈 Umi UI mini Ready on port 3000
 ```
 
-访问 [http://localhost:3000](http://localhost:3000) 就是 Umi UI。
+Visit [http://localhost:3000](http://localhost:3000) to be Umi UI.
 
-调试如图：
+Debug as shown:
 
 ![](https://raw.githubusercontent.com/ycjcl868/cdn/master/20200202091318.png?token=ADHXG5NO7FQGSB4U5HFYBH26GYRG6)
 
-### 插件开发原理
+### Plug-in development principle
 
-UI 插件与普通 Umi 的插件实际是一样的原理。
+UI plug-ins and ordinary Umi plug-ins are actually the same principle.
 
-只是比一般的 Umi 插件，多使用两个 API：
+It just uses two more APIs than ordinary Umi plugins:
 
-- `api.addUIPlugin` 用于加载 ui 的 umd 包
-- `api.onUISocket` 为前端 ui 提供服务端接口
+- ʻApi.addUIPlugin` is used to load the umd package of ui
+- ʻApi.onUISocket` provides a server interface for the front-end ui
 
-[了解更多](https://umijs.org/plugin/umi-ui.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8E%A5%E5%8F%A3)
+[Learn more](https://umijs.org/plugin/umi-ui.html#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8E%A5%E5%8F%A3)
 
-### UI 插件组织
+### UI plugin organization
 
-本仓库包括：
+This warehouse includes:
 
-- UI Server（@umijs/ui/src/UmiUI.ts，使用 Express）
-- UI 主框架（@umijs/ui/client，使用 umi 构建）
-- UI 插件集（@umijs/plugin-ui）
-    - Dashboard 面板（./plugins/dashboard）
-    - 配置插件（./plugins/configuration）
-    - 资产插件（@umijs/plugin-ui-blocks）
-    - 任务插件（@umijs/plugin-ui-tasks）
+- UI Server (@umijs/ui/src/UmiUI.ts, using Express)
+- UI main frame (@umijs/ui/client, built with umi)
+- UI plugin set (@umijs/plugin-ui)
+    - Dashboard panel (./plugins/dashboard)
+    - Configuration plugin (./plugins/configuration)
+    - Asset plugin (@umijs/plugin-ui-blocks)
+    - Task plugin (@umijs/plugin-ui-tasks)
