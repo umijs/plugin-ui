@@ -286,7 +286,7 @@ export const reduceData = treeData =>
  * @param {*} mySpinner
  */
 export async function gitClone(ctx, mySpinner) {
-  mySpinner.start(`🔍  clone git repo from ${ctx.repo}`);
+  mySpinner.start(`🔍  clone git repo from ${ctx.repo} `);
   try {
     await execa('git', ['clone', ctx.repo, ctx.id, '--recurse-submodules'], {
       cwd: ctx.blocksTempPath,

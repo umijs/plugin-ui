@@ -16,6 +16,11 @@ import { installDependencies } from './installDependencies';
 const { merge } = lodash;
 const debug = createDebug('umiui:block-sdk:addBlock');
 
+export interface BlockConfigTypes {
+  npmClient?: string;
+  blockPagesPath?: string;
+  [key: string]: any;
+}
 export interface CtxTypes {
   repo?: any;
   branch?: any;
@@ -27,7 +32,7 @@ export interface CtxTypes {
   repoExists?: boolean;
   filePath?: string;
   templateTmpDirPath?: string;
-  pkg?: { blockConfig: { [key: string]: any } };
+  pkg?: { blockConfig: BlockConfigTypes };
 }
 export interface AddBlockOption {
   // 从命令行传入会有这个
@@ -80,11 +85,14 @@ export const addPrefix = path => {
   return path;
 };
 
-export async function getCtx(url, args: AddBlockOption = {}, api: IApi): Promise<CtxTypes> {
-  const { userConfig } = api;
+export async function getCtx(
+  url,
+  args: AddBlockOption = {},
+  blockConfig: BlockConfigTypes,
+): Promise<CtxTypes> {
   debug(`get url ${url}`);
 
-  const ctx: CtxTypes = await getParsedData(url, { ...(userConfig?.block || {}), ...args });
+  const ctx: CtxTypes = await getParsedData(url, { ...(blockConfig || {}), ...args });
 
   if (!ctx.isLocal) {
     const blocksTempPath = makeSureMaterialsTempPathExist(args.dryRun);
@@ -108,11 +116,9 @@ export async function getCtx(url, args: AddBlockOption = {}, api: IApi): Promise
 }
 
 export async function addBlock(args: AddBlockOption = {}, opts: AddBlockOption = {}, api: IApi) {
-  const { paths, userConfig, applyPlugins } = api;
+  const { paths, config, applyPlugins } = api;
 
-  const blockConfig: {
-    npmClient?: string;
-  } = userConfig?.block || {};
+  const blockConfig: BlockConfigTypes = config?.block || {};
   const spinner = ora();
 
   if (!opts.remoteLog) {
@@ -149,7 +155,7 @@ export async function addBlock(args: AddBlockOption = {}, opts: AddBlockOption =
     execution = 'shell',
   } = args;
 
-  const ctx = await getCtx(url, args, api);
+  const ctx = await getCtx(url, args, blockConfig);
 
   spinner.succeed();
 
@@ -250,6 +256,7 @@ export async function addBlock(args: AddBlockOption = {}, opts: AddBlockOption =
         cwd: api.cwd,
       },
       resolved: winPath(__dirname),
+      blockPagesPath: blockConfig.blockPagesPath,
     },
   });
   try {
@@ -355,7 +362,9 @@ export async function addBlock(args: AddBlockOption = {}, opts: AddBlockOption =
   // Final: show success message
   const { PORT, BASE_PORT } = process.env;
   // Final: show success message
-  const viewUrl = `http://localhost:${BASE_PORT || PORT || '8000'}${generator.path.toLowerCase()}`;
+  const viewUrl = `http://localhost:${BASE_PORT || PORT || '8000'}${
+    config?.history && config?.history?.type === 'hash' ? '/#' : ''
+  }${generator.path.toLowerCase()}`;
 
   try {
     clipboardy.writeSync(viewUrl);

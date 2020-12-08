@@ -217,6 +217,7 @@ export const getBlockGenerator = (api: IApi) => {
     // 添加方式
     public addType: 'git' | 'files' = 'git';
     public files: string[];
+    public blockPagesPath: string;
 
     constructor({ args, name }) {
       // @ts-ignore
@@ -245,6 +246,7 @@ export const getBlockGenerator = (api: IApi) => {
       // 资产类型：git 还是 files
       this.addType = args.files ? 'files' : 'git';
       this.files = args.files || [];
+      this.blockPagesPath = args.blockPagesPath || '';
     }
 
     run(): Promise<any> {
@@ -419,7 +421,11 @@ export const getBlockGenerator = (api: IApi) => {
           // @ folder not support anymore in new specVersion
           return;
         }
-        const folderPath = join(this.sourcePath, folder);
+        const folderPath = join(
+          this.sourcePath,
+          folder,
+          this.blockPagesPath && this.blockPagesPath !== 'src' ? this.blockPagesPath : '',
+        );
         let targetFolder;
         if (this.isPageBlock) {
           targetFolder = folder === 'src' ? targetPath : paths.absSrcPath;
