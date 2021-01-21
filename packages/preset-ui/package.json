@@ -14,7 +14,7 @@
     "@umijs/plugin-ui-blocks": "^2.2.7",
     "@umijs/plugin-ui-tasks": "^2.2.0",
     "@umijs/ui": "^2.2.2",
-    "immer": "^5.0.0",
+    "immer": "^8.0.1",
     "is-mobile": "2.1.0",
     "sockjs-client": "1.3.0",
     "styled-components": "^4.4.0"
