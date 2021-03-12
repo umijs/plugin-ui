@@ -83,7 +83,7 @@
     "mkdirp": "0.5.1",
     "node-notifier": "^5.4.1",
     "portfinder": "1.0.21",
-    "react-dev-utils": "9.0.1",
+    "react-dev-utils": "11.0.4",
     "regenerator-runtime": "0.13.2",
     "resolve-cwd": "3.0.0",
     "resolve-from": "5.0.0",
