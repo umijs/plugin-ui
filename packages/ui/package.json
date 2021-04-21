@@ -90,6 +90,6 @@
     "rimraf": "3.0.0",
     "runscript": "^1.4.0",
     "semver": "6.3.0",
-    "sockjs": "0.3.19"
+    "sockjs": "0.3.20"
   }
 }
